@@ -28,7 +28,7 @@ async function generateImage(html) {
     fullPage: false,
     type: "png",
   });
-  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1.5 });
+  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1 });
   await page.setContent(html, { waitUntil: "domcontentloaded" });
 
   await page.evaluateHandle(async () => {
