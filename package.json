@@ -8,6 +8,7 @@
     "npm": ">=6.0.0"
   },
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "keywords": [],
@@ -16,6 +17,11 @@
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",
     "express": "^4.17.1",
+    "pug": "^3.0.2",
+    "puppeteer": "^13.0.1",
     "puppeteer-core": "^13.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

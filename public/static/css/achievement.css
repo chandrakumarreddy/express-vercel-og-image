@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  width: 312px;
+  height: 312px;
+  position: relative;
+  color: #fff;
+}
+
+.bg-image {
+  position: absolute;
+  z-index: -1;
+}
+
+.image1 {
+  position: absolute;
+  z-index: 20;
+  top: 71px;
+  left: 43px;
+  border-radius: 50%;
+}
+
+.image2 {
+  top: 71px;
+  left: 196px;
+  position: absolute;
+  z-index: 20;
+  border-radius: 50%;
+}
+
+.image3 {
+  position: absolute;
+  z-index: 20;
+  top: 31px;
+  left: 88px;
+}
+
+.title1 {
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding-top: 164px;
+}
+
+.title2 {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.title3 {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.mt-4 {
+  margin-top: 4px;
+}

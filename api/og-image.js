@@ -7,9 +7,9 @@ router.get("/", async (req, res) => {
   const browser = await puppeteer.launch(
     process.env.AWS_EXECUTION_ENV
       ? {
-          args: chrome.args,
+          args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
           executablePath: await chrome.executablePath,
-          headless: chrome.headless,
+          headless: true,
         }
       : {
           args: [],
