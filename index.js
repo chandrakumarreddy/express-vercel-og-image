@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const ogImage = require("./api/og-image");
 const getImage = require("./api/get-image");
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json({ extended: false }));
 
 app.use("/api/og-image", ogImage);

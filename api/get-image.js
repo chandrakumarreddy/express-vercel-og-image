@@ -28,29 +28,26 @@ async function generateImage(html) {
     fullPage: false,
     type: "png",
   });
-  await page.setViewport({ width: 312, height: 312 });
+  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1.5 });
   await page.setContent(html, { waitUntil: "domcontentloaded" });
 
-  try {
-    await page.evaluateHandle(async () => {
-      const selectors = Array.from(document.querySelectorAll("img"));
-      await Promise.all([
-        document.fonts.ready,
-        ...selectors.map((img) => {
-          if (img.complete) {
-            if (img.naturalHeight !== 0) return;
-            throw new Error("Image failed to load");
-          }
-          return new Promise((resolve, reject) => {
-            img.addEventListener("load", resolve);
-            img.addEventListener("error", reject);
-          });
-        }),
-      ]);
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  await page.evaluateHandle(async () => {
+    const selectors = Array.from(document.querySelectorAll("img"));
+    await Promise.all([
+      document.fonts.ready,
+      ...selectors.map((img) => {
+        if (img.complete) {
+          if (img.naturalHeight !== 0) return;
+          throw new Error("Image failed to load");
+        }
+        return new Promise((resolve, reject) => {
+          img.addEventListener("load", resolve);
+          img.addEventListener("error", reject);
+        });
+      }),
+    ]);
+  });
+
   const data = await page.screenshot({
     type: "png",
   });
