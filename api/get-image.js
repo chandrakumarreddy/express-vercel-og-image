@@ -29,7 +29,7 @@ async function generateImage(html) {
     type: "png",
   });
   await Promise.all[
-    (page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1 }),
+    (page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1.2 }),
     page.setContent(html, { waitUntil: "domcontentloaded" }))
   ];
   await page.evaluate(async () => {
