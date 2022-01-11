@@ -28,10 +28,11 @@ async function generateImage(html) {
     fullPage: false,
     type: "png",
   });
-  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 2 });
-  await page.setContent(html, { waitUntil: "domcontentloaded" });
-
-  await page.evaluateHandle(async () => {
+  await Promise.all[
+    (page.setViewport({ width: 312, height: 312, deviceScaleFactor: 2 }),
+    page.setContent(html, { waitUntil: "domcontentloaded" }))
+  ];
+  await page.evaluate(async () => {
     const selectors = Array.from(document.querySelectorAll("img"));
     await Promise.all([
       document.fonts.ready,
@@ -47,7 +48,6 @@ async function generateImage(html) {
       }),
     ]);
   });
-
   const data = await page.screenshot({
     type: "png",
   });
