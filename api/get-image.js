@@ -56,8 +56,6 @@ async function generateImage(html) {
 }
 
 router.get("/", async (req, res) => {
-  // res.render(path.join(__dirname, `../template/achievement.pug`));
-  // return;
   const template = req.query.template || "achievement";
   const template_data = Buffer.from(
     req.query.template_data,
