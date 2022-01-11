@@ -28,7 +28,7 @@ async function generateImage(html) {
     fullPage: false,
     type: "png",
   });
-  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 1 });
+  await page.setViewport({ width: 312, height: 312, deviceScaleFactor: 2 });
   await page.setContent(html, { waitUntil: "domcontentloaded" });
 
   await page.evaluateHandle(async () => {
@@ -59,12 +59,13 @@ router.get("/", async (req, res) => {
   // res.render(path.join(__dirname, `../template/achievement.pug`));
   // return;
   const template = req.query.template || "achievement";
-  //   const template_data = req.query.templateData;
+  const template_data = Buffer.from(
+    req.query.template_data,
+    "base64"
+  ).toString();
   const html = pug.renderFile(
     `${path.join(__dirname, `../template/${template}.pug`)}`,
-    {
-      name: "fancyTemplateFun",
-    }
+    JSON.parse(template_data)
   );
   const data = await generateImage(html);
   res.setHeader(
